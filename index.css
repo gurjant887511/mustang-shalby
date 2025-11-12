@@ -54,7 +54,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.01rem 5%;
     background: var(--navbar);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -62,7 +62,7 @@ body {
 }
 
 .nav-logo img {
-    height: 40px;
+    height: 50px;
 }
 
 /* Desktop nav links */
@@ -357,11 +357,18 @@ body {
 
 /* Footer */
 .site-footer {
-    background: var(--secondary);
-    color: white;
+    /* Default (light site theme): footer should be dark with white text */
+    background: #000000;
+    color: #ffffff;
     position: relative;
     padding: 6rem 5% 2rem;
     margin-top: 4rem;
+}
+
+/* When the site is in dark mode, invert the footer to be light with dark text */
+.dark-theme .site-footer {
+    background: #f7f7f7;
+    color: #0b0b0b;
 }
 
 .footer-waves {
@@ -379,7 +386,20 @@ body {
     display: block;
     width: calc(100% + 1.3px);
     height: 100px;
-    fill: var(--secondary);
+    fill: #000000; /* default wave matches dark footer */
+}
+
+/* Wave color when dark-theme is active (light footer) */
+.dark-theme .footer-waves svg {
+    fill: #f7f7f7;
+}
+
+/* Footer logo color handling: invert image on dark footer to appear white, remove invert in light footer */
+.site-footer .footer-logo {
+    filter: invert(1) grayscale(1) contrast(1.05);
+}
+.dark-theme .site-footer .footer-logo {
+    filter: none;
 }
 
 .footer-content {
@@ -388,6 +408,61 @@ body {
     gap: 4rem;
     position: relative;
     z-index: 1;
+}
+
+/* Make most footer text inherit the footer color so it flips with themes */
+.site-footer a,
+.site-footer .brand-description,
+.site-footer .contact-item,
+.site-footer .links-column a,
+.site-footer .newsletter p,
+.site-footer .newsletter h4,
+.site-footer .footer-bottom-links a,
+.site-footer .copyright {
+    color: inherit;
+}
+
+/* Footer input/button defaults for dark footer (light text) */
+.site-footer .newsletter-form input {
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+.site-footer .newsletter-form button {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+/* When site uses dark-theme (light footer), make footer elements dark */
+.dark-theme .site-footer a,
+.dark-theme .site-footer .brand-description,
+.dark-theme .site-footer .contact-item,
+.dark-theme .site-footer .links-column a,
+.dark-theme .site-footer .newsletter p,
+.dark-theme .site-footer .newsletter h4,
+.dark-theme .site-footer .footer-bottom-links a,
+.dark-theme .site-footer .copyright {
+    color: #0b0b0b;
+}
+
+.dark-theme .site-footer .newsletter-form input {
+    background: rgba(0,0,0,0.04);
+    color: #0b0b0b;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+.dark-theme .site-footer .newsletter-form button {
+    background: var(--primary);
+    color: #0b0b0b;
+}
+
+/* Social icon backgrounds adapt to footer color */
+.site-footer .social-icon {
+    background: rgba(255,255,255,0.1);
+    color: #ffffff;
+}
+.dark-theme .site-footer .social-icon {
+    background: rgba(0,0,0,0.06);
+    color: #0b0b0b;
 }
 
 /* Brand Section */
@@ -445,14 +520,17 @@ body {
 }
 
 .links-column h5 {
-    color: var(--primary);
+    /* Follow footer's text color (inherits) so headings flip with theme */
+    color: inherit;
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
 
 .links-column a {
     display: block;
+    /* color: rgba(0, 0, 0, 0.8); */
     color: rgba(255, 255, 255, 0.8);
+    /* text-shadow: 0px 0px 5px white; */
     text-decoration: none;
     margin-bottom: 0.8rem;
     transition: all 0.3s ease;
@@ -472,11 +550,14 @@ body {
 
 .newsletter h4 {
     font-size: 1.5rem;
-    color: white;
+    /* Headings inherit footer color so they flip with theme */
+    color: inherit;
+    text-shadow: none;
 }
 
 .newsletter p {
-    color: rgba(255, 255, 255, 0.8);
+    /* Paragraphs inherit footer color */
+    color: inherit;
     line-height: 1.6;
 }
 
@@ -489,10 +570,11 @@ body {
 .newsletter-form input {
     flex: 1;
     padding: 0.8rem 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+    /* use subtle background that adapts via earlier rules */
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: inherit;
     font-size: 1rem;
 }
 
@@ -503,7 +585,7 @@ body {
 
 .newsletter-form button {
     background: var(--primary);
-    color: white;
+    color: inherit;
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 30px;
@@ -531,7 +613,8 @@ body {
     height: 40px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
-    color: white;
+    /* color adapts to footer color */
+    color: inherit;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -548,6 +631,10 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.dark-theme .site-footer .footer-bottom {
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
 .footer-bottom-content {
     display: flex;
     justify-content: space-between;
@@ -557,7 +644,7 @@ body {
 }
 
 .copyright {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .footer-bottom-links {
@@ -566,7 +653,7 @@ body {
 }
 
 .footer-bottom-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(3, 3, 3, 0.8);
     text-decoration: none;
     transition: color 0.3s ease;
 }
