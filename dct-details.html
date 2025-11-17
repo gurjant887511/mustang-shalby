@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Speed TREMEC DCT - Mustang Shelby</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Detail Hero Section - Premium Look */
+        .detail-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 50%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background pattern */
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(211, 47, 47, 0.1) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .detail-hero > div {
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .detail-hero h1 {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .detail-hero p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        /* Detail Container */
+        .detail-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 5rem 5%;
+            background: var(--background);
+        }
+
+        /* Detail Sections */
+        .detail-section {
+            margin-bottom: 4.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .detail-section:nth-child(2) { animation-delay: 0.1s; }
+        .detail-section:nth-child(3) { animation-delay: 0.2s; }
+        .detail-section:nth-child(4) { animation-delay: 0.3s; }
+        .detail-section:nth-child(5) { animation-delay: 0.4s; }
+        .detail-section:nth-child(6) { animation-delay: 0.5s; }
+        .detail-section:nth-child(7) { animation-delay: 0.6s; }
+        .detail-section:nth-child(8) { animation-delay: 0.7s; }
+        .detail-section:nth-child(9) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .detail-section h2 {
+            font-size: 2.5rem;
+            color: #d32f2f;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .detail-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #d32f2f, transparent);
+            border-radius: 2px;
+        }
+
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-top: 2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .detail-section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #d32f2f;
+            border-radius: 2px;
+        }
+
+        .detail-section p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .detail-section ul, .detail-section ol {
+            padding-left: 2.5rem;
+            line-height: 2;
+        }
+
+        .detail-section li {
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+        }
+
+        .detail-section ul li::marker {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        /* Specs Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .spec-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #d32f2f;
+            box-shadow: 0 8px 20px var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d32f2f, transparent);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .spec-card .label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-card .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #d32f2f;
+            letter-spacing: -1px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 3rem;
+            padding: 1rem 2rem;
+            background: #d32f2f;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .back-button:hover {
+            background: #b71c1c;
+            transform: translateX(-5px);
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.4);
+        }
+
+        .back-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+
+        .emoji {
+            font-size: 2.2rem;
+            display: inline-block;
+        }
+
+        /* Intro Section */
+        .detail-container > .detail-section:first-of-type p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.9;
+            color: var(--text);
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #d32f2f;
+            margin-bottom: 2rem;
+        }
+
+        /* Feature Box */
+        .feature-box {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #d32f2f;
+            margin: 2rem 0;
+        }
+
+        .feature-box strong {
+            color: #d32f2f;
+        }
+
+        /* Table Style */
+        .gear-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--surface);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .gear-table th {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .gear-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--shadow);
+            color: var(--text);
+        }
+
+        .gear-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .gear-table tr:hover {
+            background: rgba(211, 47, 47, 0.05);
+        }
+
+        .gear-table .gear-num {
+            color: #d32f2f;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .detail-hero {
+                min-height: 50vh;
+                padding: 4rem 5% 2rem;
+            }
+
+            .detail-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .detail-hero p {
+                font-size: 1.1rem;
+            }
+
+            .detail-container {
+                padding: 3rem 5%;
+            }
+
+            .detail-section h2 {
+                font-size: 2rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .spec-card {
+                padding: 1.5rem;
+            }
+
+            .spec-card .value {
+                font-size: 1.6rem;
+            }
+
+            .back-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .gear-table th, .gear-table td {
+                padding: 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Dark Theme */
+        .dark-theme {
+            --primary: #d32f2f;
+            --text: #ffffff;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --muted: #9ca3af;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="logo/shalby logo 2.jpg" alt="Shelby Logo">
+        </div>
+
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Open navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <div class="nav-links" id="navMenu">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#models">Models</a>
+            <a href="index.html#heritage">Heritage</a>
+            <a href="index.html#performance">Performance</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle dark/light">
+            <i class="fas fa-sun light-icon"></i>
+            <i class="fas fa-moon dark-icon"></i>
+        </button>
+    </nav>
+
+    <div class="detail-hero">
+        <div>
+            <h1>7-Speed TREMEC DCT</h1>
+            <p>Dual-Clutch Transmission Technology</p>
+        </div>
+    </div>
+
+    <div class="detail-container">
+        <a href="index.html#performance" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Performance
+        </a>
+
+        <div class="detail-section">
+            <p>The 7-Speed TREMEC TR-9070 DCT is one of the most advanced transmissions ever installed in a Mustang. It was designed specifically for high-performance, high-torque, and track-focused cars. This dual-clutch system delivers lightning-fast shifts with zero power loss, making it the perfect match for the Shelby GT500's supercharged power.</p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">⭐</span> Overview</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Type</div>
+                    <div class="value">DCT</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Manufacturer</div>
+                    <div class="value">TREMEC</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Model</div>
+                    <div class="value">TR-9070</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Speeds</div>
+                    <div class="value">7</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Max Torque</div>
+                    <div class="value">900 Nm</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Launch Year</div>
+                    <div class="value">2020</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🔧</span> How Dual-Clutch Transmission Works</h2>
+            <p>A DCT uses two clutches inside the transmission:</p>
+            <ul>
+                <li><strong>Clutch 1:</strong> Controls odd gears (1, 3, 5, 7)</li>
+                <li><strong>Clutch 2:</strong> Controls even gears (2, 4, 6)</li>
+            </ul>
+            <p>This allows:</p>
+            <ul>
+                <li>One gear engaged</li>
+                <li>Next gear pre-selected and ready</li>
+                <li>Instant, lightning-fast shifts with no power loss</li>
+                <li>Continuous acceleration without pausing between shifts</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🔥</span> Key Features of the 7-Speed TREMEC DCT</h2>
+
+            <h3>1. Ultra-Fast Shifting</h3>
+            <ul>
+                <li>Gear changes take under 100 milliseconds</li>
+                <li>Faster than any manual or torque-converter automatic</li>
+                <li>Imperceptible to the driver</li>
+            </ul>
+
+            <h3>2. Computer-Controlled Precision</h3>
+            <p>The transmission software adjusts shifts based on:</p>
+            <ul>
+                <li>Driving mode</li>
+                <li>Throttle input</li>
+                <li>Traction</li>
+                <li>Engine speed</li>
+            </ul>
+
+            <h3>3. Multiple Driving Modes</h3>
+            <p>The transmission comes with multiple modes, each changing shift timing, shift speed, and gear holding patterns:</p>
+            <ul>
+                <li><strong>Normal:</strong> Smooth, efficient highway driving</li>
+                <li><strong>Sport:</strong> Faster shifts and higher RPM holding</li>
+                <li><strong>Drag:</strong> Aggressive low-end acceleration</li>
+                <li><strong>Track:</strong> Maximum performance optimization</li>
+                <li><strong>Snow/Wet:</strong> Traction management</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🚀</span> Performance Benefits</h2>
+
+            <h3>1. Maximum Acceleration</h3>
+            <p>With no shift lag, the car reaches high speed extremely quickly. The continuous power delivery means no interruption in acceleration.</p>
+
+            <h3>2. Continuous Power Delivery</h3>
+            <p>Unlike manual or traditional automatic transmissions, DCT keeps the engine in the power band throughout acceleration, delivering maximum performance.</p>
+
+            <h3>3. Strong Enough for Supercharged Power</h3>
+            <p>The Shelby GT500 produces:</p>
+            <ul>
+                <li><strong>760 hp</strong></li>
+                <li><strong>625+ lb-ft torque</strong></li>
+            </ul>
+            <p>The TREMEC DCT is specifically engineered to handle this extreme power without compromise.</p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">⚙️</span> Technical Highlights</h2>
+
+            <h3>1. Wet Dual-Clutch System</h3>
+            <p>Uses oil for cooling and lubrication, which provides:</p>
+            <ul>
+                <li>Better heat control during intense driving</li>
+                <li>Higher torque handling capacity</li>
+                <li>Longer clutch life</li>
+                <li>Improved reliability</li>
+            </ul>
+
+            <h3>2. Integrated Paddle Shifters</h3>
+            <ul>
+                <li>Mounted on the steering wheel for manual control</li>
+                <li>Shifts are immediate, precise, and zero-delay</li>
+                <li>Allows drivers to take full control</li>
+            </ul>
+
+            <h3>3. Launch Control + Line Lock</h3>
+            <p>Built-in performance features:</p>
+            <ul>
+                <li><strong>Launch Control:</strong> Perfect start from zero RPM</li>
+                <li><strong>Line Lock:</strong> Holds front brakes for burnout and tire warming</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">📈</span> Gear Ratio Details (TR-9070 DCT)</h2>
+            <p>Approximate gear ratios for maximum performance optimization:</p>
+            
+            <table class="gear-table">
+                <thead>
+                    <tr>
+                        <th>Gear</th>
+                        <th>Ratio</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gear-num">1st</td>
+                        <td>4.70</td>
+                        <td>Maximum acceleration from standstill</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">2nd</td>
+                        <td>3.13</td>
+                        <td>Continued acceleration</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">3rd</td>
+                        <td>2.10</td>
+                        <td>Mid-range power band</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">4th</td>
+                        <td>1.67</td>
+                        <td>Acceleration continuation</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">5th</td>
+                        <td>1.32</td>
+                        <td>Highway cruising</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">6th</td>
+                        <td>1.00</td>
+                        <td>Direct drive</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">7th</td>
+                        <td>0.85</td>
+                        <td>Overdrive - fuel efficiency</td>
+                    </tr>
+                    <tr>
+                        <td class="gear-num">Reverse</td>
+                        <td>4.94</td>
+                        <td>Strong backing up power</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🤔</span> Why GT500 Uses DCT Instead of Manual</h2>
+            <p>Ford did NOT offer a manual transmission for the GT500 for specific performance reasons:</p>
+            <ul>
+                <li><strong>Manual shifting is slower:</strong> Human reaction times create lag</li>
+                <li><strong>DCT gives better lap times:</strong> Faster shifts = faster overall performance</li>
+                <li><strong>Handles more torque:</strong> DCT built for extreme power delivery</li>
+                <li><strong>Consistent performance:</strong> Computer optimization beats human input on track</li>
+                <li><strong>Maximum capability:</strong> DCT is the only transmission capable of handling this power consistently</li>
+            </ul>
+            <p>The engineers wanted maximum performance, and the DCT was the only choice.</p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🏆</span> Final Summary</h2>
+            <div class="feature-box">
+                <p><strong>The 7-Speed TREMEC TR-9070 DCT is:</strong></p>
+                <ul>
+                    <li>Race-level transmission technology</li>
+                    <li>Ultra-quick with sub-100ms shift times</li>
+                    <li>High-torque capable (900+ Nm)</li>
+                    <li>Computer-controlled and intelligent</li>
+                    <li>Wet dual-clutch system for reliability</li>
+                </ul>
+                <p style="margin-top: 1.5rem;"><strong>It gives the Mustang GT500:</strong></p>
+                <ul>
+                    <li>✓ Instant gear shifts with no power loss</li>
+                    <li>✓ Better acceleration than any manual</li>
+                    <li>✓ Higher top speed potential</li>
+                    <li>✓ Extreme track performance</li>
+                    <li>✓ Unmatched reliability under stress</li>
+                </ul>
+                <p style="margin-top: 1.5rem;"><strong>One of the best DCT systems ever installed in an American muscle car.</strong></p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem; padding: 3rem 0; border-top: 2px solid var(--shadow);">
+            <a href="index.html#performance" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Performance
+            </a>
+        </div>
+    </div>
+
+    <footer id="contact" class="site-footer">
+        <div class="footer-waves">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section brand-section">
+                <img src="logo/shalby logo 2.jpg" alt="Shelby Logo" class="footer-logo">
+                <p class="brand-description">Experience the pinnacle of American performance engineering. Built for those who demand excellence.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (800) SHELBY-1</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@shelby.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Las Vegas, Nevada, USA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h4>Quick Links</h4>
+                <div class="links-grid">
+                    <div class="links-column">
+                        <h5>Models</h5>
+                        <a href="index.html#models">GT500</a>
+                        <a href="index.html#models">GT350</a>
+                        <a href="index.html#models">Super Snake</a>
+                    </div>
+                    <div class="links-column">
+                        <h5>Company</h5>
+                        <a href="index.html#heritage">Heritage</a>
+                        <a href="index.html#performance">Performance</a>
+                        <a href="index.html#home">About Us</a>
+                    </div>
+                    <div class="links-column">
+                        <h5>Support</h5>
+                        <a href="index.html#contact">Service</a>
+                        <a href="index.html#contact">Parts</a>
+                        <a href="index.html#contact">Warranty</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">&copy; <span id="year">2025</span> Mustang Shelby. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

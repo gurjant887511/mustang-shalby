@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ford Mustang Shelby GT500 - Mustang Shelby</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Detail Hero Section - Premium Look */
+        .detail-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #e31837 0%, #9c2121 50%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background pattern */
+        .detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(227,24,55,0.1) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .detail-hero > div {
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .detail-hero h1 {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .detail-hero p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        /* Detail Container */
+        .detail-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 5rem 5%;
+            background: var(--background);
+        }
+
+        /* Detail Sections */
+        .detail-section {
+            margin-bottom: 4.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .detail-section:nth-child(2) { animation-delay: 0.1s; }
+        .detail-section:nth-child(3) { animation-delay: 0.2s; }
+        .detail-section:nth-child(4) { animation-delay: 0.3s; }
+        .detail-section:nth-child(5) { animation-delay: 0.4s; }
+        .detail-section:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .detail-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .detail-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 2px;
+        }
+
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-top: 2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .detail-section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .detail-section p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .detail-section ul, .detail-section ol {
+            padding-left: 2.5rem;
+            line-height: 2;
+        }
+
+        .detail-section li {
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+        }
+
+        .detail-section ul li::marker {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Specs Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .spec-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 8px 20px var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .spec-card .label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-card .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 3rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(227, 24, 55, 0.3);
+        }
+
+        .back-button:hover {
+            background: var(--accent);
+            transform: translateX(-5px);
+            box-shadow: 0 8px 20px rgba(227, 24, 55, 0.4);
+        }
+
+        .back-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+
+        .emoji {
+            font-size: 2.2rem;
+            display: inline-block;
+        }
+
+        /* Intro Section */
+        .detail-container > .detail-section:first-of-type p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.9;
+            color: var(--text);
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer Separator */
+        .footer-separator {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 3rem 0;
+            border-top: 2px solid var(--shadow);
+            border-bottom: 2px solid var(--shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .detail-hero {
+                min-height: 50vh;
+                padding: 4rem 5% 2rem;
+            }
+
+            .detail-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .detail-hero p {
+                font-size: 1.1rem;
+            }
+
+            .detail-container {
+                padding: 3rem 5%;
+            }
+
+            .detail-section h2 {
+                font-size: 2rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .spec-card {
+                padding: 1.5rem;
+            }
+
+            .spec-card .value {
+                font-size: 1.6rem;
+            }
+
+            .back-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Dark Theme */
+        .dark-theme {
+            --primary: #ff1f1f;
+            --secondary: #ffffff;
+            --text: #ffffff;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --muted: #9ca3af;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="logo/shalby logo 2.jpg" alt="Shelby Logo">
+        </div>
+
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Open navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <div class="nav-links" id="navMenu">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#models">Models</a>
+            <a href="index.html#heritage">Heritage</a>
+            <a href="index.html#performance">Performance</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle dark/light">
+            <i class="fas fa-sun light-icon"></i>
+            <i class="fas fa-moon dark-icon"></i>
+        </button>
+    </nav>
+
+    <div class="detail-hero">
+        <div>
+            <h1>Ford Mustang Shelby GT500</h1>
+            <p>The Most Powerful Mustang Ever Built</p>
+        </div>
+    </div>
+
+    <div class="detail-container">
+        <a href="index.html#models" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Models
+        </a>
+
+        <div class="detail-section">
+            <p>The Ford Mustang Shelby GT500 is the most powerful, fastest, and most track-focused Mustang ever produced by Ford. It represents the top level of Mustang engineering—combining American muscle with modern supercar technology.</p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">⭐</span> Overview</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="label">Model</div>
+                    <div class="value">GT500</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Horsepower</div>
+                    <div class="value">760 HP</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Torque</div>
+                    <div class="value">625 lb-ft</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">0-100 km/h</div>
+                    <div class="value">3.3s</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Top Speed</div>
+                    <div class="value">290 km/h</div>
+                </div>
+                <div class="spec-card">
+                    <div class="label">Years</div>
+                    <div class="value">2020-2022</div>
+                </div>
+            </div>
+            <ul style="margin-top: 2rem;">
+                <li><strong>Model:</strong> Ford Mustang Shelby GT500</li>
+                <li><strong>Production Years:</strong> 2020–2022 (latest generation)</li>
+                <li><strong>Engine:</strong> 5.2L Supercharged V8 (Predator)</li>
+                <li><strong>Horsepower:</strong> 760 hp</li>
+                <li><strong>Torque:</strong> 625 lb-ft (847 Nm)</li>
+                <li><strong>Drivetrain:</strong> Rear-wheel drive (RWD)</li>
+                <li><strong>Transmission:</strong> 7-speed Dual-Clutch Transmission (DCT)</li>
+                <li><strong>Type:</strong> High-performance muscle/sports car</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🔥</span> Engine & Performance</h2>
+
+            <h3>5.2L SUPERCHARGED "PREDATOR" V8</h3>
+            <ul>
+                <li>760 horsepower</li>
+                <li>625 lb-ft torque</li>
+                <li>Eaton 2.65L supercharger</li>
+                <li>Direct injection</li>
+                <li>High-strength internal components</li>
+            </ul>
+
+            <h3>Performance Numbers</h3>
+            <ul>
+                <li><strong>0–100 km/h:</strong> ~3.3 seconds</li>
+                <li><strong>Top Speed:</strong> around 290 km/h (180 mph)</li>
+                <li><strong>Quarter Mile:</strong> ~10.7 seconds</li>
+                <li><strong>Braking (100–0):</strong> Extremely strong Brembo brakes</li>
+            </ul>
+            <p><strong>The GT500 is one of the most powerful factory Mustangs ever made.</strong></p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🏎️</span> Transmission</h2>
+            <h3>7-Speed Tremec Dual-Clutch Transmission (DCT)</h3>
+            <ul>
+                <li>Lightning-fast gear shifts</li>
+                <li>Similar technology used in supercars</li>
+                <li>No manual option</li>
+                <li>Provides instant acceleration and smooth power delivery</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">⚙️</span> Suspension & Handling</h2>
+            <h3>Suspension</h3>
+            <ul>
+                <li>MagneRide adaptive dampers</li>
+                <li>Race-tuned chassis</li>
+                <li>Wider track for stability</li>
+            </ul>
+
+            <h3>Handling Abilities</h3>
+            <ul>
+                <li>High-speed cornering</li>
+                <li>Strong grip</li>
+                <li>Very balanced for a high-horsepower RWD car</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🛑</span> Brakes</h2>
+            <h3>Brembo Braking System</h3>
+            <ul>
+                <li>Huge 16.5-inch front rotors</li>
+                <li>6-piston calipers</li>
+                <li>Excellent stopping power even at high speeds</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🎨</span> Design & Exterior</h2>
+            <h3>Exterior Highlights</h3>
+            <ul>
+                <li>Aggressive front fascia</li>
+                <li>Large rear wing (Carbon Fiber Track Pack)</li>
+                <li>Massive front grille for cooling</li>
+                <li>Dual hood vents with air extraction</li>
+                <li>Wide body stance</li>
+                <li>Quad exhaust tips</li>
+            </ul>
+            <p><strong>Designed not just to look powerful—but to improve aerodynamics and cooling.</strong></p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🪑</span> Interior Features</h2>
+            <ul>
+                <li>Recaro sport seats (optional)</li>
+                <li>Flat-bottom steering wheel</li>
+                <li>Digital instrument cluster</li>
+                <li>Touchscreen with SYNC infotainment</li>
+                <li>Leather and suede materials</li>
+                <li>Carbon fiber trim (Track Pack)</li>
+            </ul>
+            <p><strong>Interior is a mix of sporty and premium.</strong></p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🎛️</span> Driving Modes</h2>
+            <ul>
+                <li>Normal</li>
+                <li>Sport</li>
+                <li>Track</li>
+                <li>Drag Strip</li>
+                <li>Wet/Slippery</li>
+            </ul>
+            <p><strong>Each mode changes throttle, steering, suspension, and transmission behavior.</strong></p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🧪</span> Key Technology</h2>
+            <ul>
+                <li>Launch control</li>
+                <li>Line lock (burnouts)</li>
+                <li>Traction management system</li>
+                <li>Active valve performance exhaust</li>
+                <li>Real-time vehicle performance monitoring</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">🏁</span> Special Edition / Packages</h2>
+            <h3>Carbon Fiber Track Pack</h3>
+            <ul>
+                <li>Carbon fiber wheels</li>
+                <li>GT4-style carbon rear wing</li>
+                <li>Michelin Pilot Sport Cup 2 tires</li>
+                <li>Rear seat delete</li>
+                <li>Extra performance upgrades</li>
+            </ul>
+            <p><strong>This is the most extreme version of the GT500.</strong></p>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">💰</span> Price Range</h2>
+            <ul>
+                <li><strong>Base GT500:</strong> around $70,000–$75,000 USD</li>
+                <li><strong>With Track Pack:</strong> can exceed $100,000+ USD</li>
+            </ul>
+        </div>
+
+        <div class="detail-section">
+            <h2><span class="emoji">📌</span> Why the Shelby GT500 Is Special</h2>
+            <ul>
+                <li>Most powerful production Mustang ever</li>
+                <li>Supercar-level acceleration</li>
+                <li>Legendary Shelby heritage</li>
+                <li>Brutal power + modern technology</li>
+                <li>One of the best-sounding V8s</li>
+                <li>It's a true American performance icon</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem; padding: 3rem 0; border-top: 2px solid var(--shadow);">
+            <a href="index.html#models" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Models
+            </a>
+        </div>
+    </div>
+
+    <footer id="contact" class="site-footer">
+        <div class="footer-waves">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section brand-section">
+                <img src="logo/shalby logo 2.jpg" alt="Shelby Logo" class="footer-logo">
+                <p class="brand-description">Experience the pinnacle of American performance engineering. Built for those who demand excellence.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (800) SHELBY-1</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@shelby.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Las Vegas, Nevada, USA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h4>Quick Links</h4>
+                <div class="links-grid">
+                    <div class="links-column">
+                        <h5>Models</h5>
+                        <a href="index.html#models">GT500</a>
+                        <a href="index.html#models">GT350</a>
+                        <a href="index.html#models">Super Snake</a>
+                    </div>
+                    <div class="links-column">
+                        <h5>Company</h5>
+                        <a href="index.html#heritage">Heritage</a>
+                        <a href="index.html#performance">Performance</a>
+                        <a href="index.html#home">About Us</a>
+                    </div>
+                    <div class="links-column">
+                        <h5>Support</h5>
+                        <a href="index.html#contact">Service</a>
+                        <a href="index.html#contact">Parts</a>
+                        <a href="index.html#contact">Warranty</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">&copy; <span id="year">2025</span> Mustang Shelby. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

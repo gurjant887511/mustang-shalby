@@ -240,6 +240,41 @@ body {
     transform: translateY(-10px);
 }
 
+/* Make model cards clickable with special styling */
+.model-link {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.model-link:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px var(--shadow), inset 0 0 20px rgba(227, 24, 55, 0.08);
+    transform: translateY(-12px);
+}
+
+.model-link::after {
+    content: 'Click for details';
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    font-size: 0.8rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.model-link:hover::after {
+    opacity: 1;
+}
+
 .model-card img {
     width: 100%;
     height: 200px;
@@ -347,6 +382,42 @@ body {
 
 .feature:hover {
     transform: translateY(-5px);
+}
+
+/* Make first feature card clickable with special styling */
+.feature-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid var(--primary);
+    box-shadow: 0 5px 15px var(--shadow), inset 0 0 20px rgba(227, 24, 55, 0.05);
+}
+
+.feature-link:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--shadow), inset 0 0 30px rgba(227, 24, 55, 0.1);
+    background: linear-gradient(135deg, var(--background), var(--surface));
+}
+
+.feature-link::after {
+    content: 'Click for details';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.75rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.feature-link:hover::after {
+    opacity: 1;
 }
 
 .feature i {
