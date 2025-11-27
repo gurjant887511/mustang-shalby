@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /img/private/
+
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Allow search engines to crawl all pages
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
